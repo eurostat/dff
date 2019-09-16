@@ -27,19 +27,20 @@ analgesics to toothpastes).
 
 **<a name="Overview"></a>Overview**
 
-The documentation located in the _docs/_ folder introduces the data set and describes how the data can be acquired 
+The documentation located in the [_docs/_](docs) folder introduces the data set and describes how the data can be acquired 
 and pre-processed, followed by a presentation of the estimation of price index numbers showing the usefulness for 
-both research and training purposes. The codes used are located in the _SAS/_ folder. The newly-made _CSV_ files (see 
-link below) should be used to run the code located in the _R/_ folder. Both sets of code allow generating analysis-ready 
-data and basing calculations on the very same data, thus discounting the incomparability of different data sets.
+both research and training purposes. The codes used are located in the [_SAS/_](SAS) folder. The newly-made _CSV_ files 
+(see link below) should be used to run the code located in the [_R/_](R) folder. Both sets of code allow generating 
+analysis-ready data and basing calculations on the very same data, thus discounting the incomparability of different 
+data sets.
 
 In order to run the codes, it is necessary to download (and extract) all category-specific files, i.e. the UPC files 
 and movement files (in _SAS_ format for the _SAS_ codes, in _CSV_ format for the _R_ code) from the website of the 
 James M. Kilts Center at the University of Chicago Booth School of Business:
 [https://www.chicagobooth.edu/research/kilts/datasets/dominicks](https://www.chicagobooth.edu/research/kilts/datasets/dominicks).
 
-Furthermore, we provide two files located in the _CSV/_ folder that prepare the information on the week variable and 
-the stores included that was covered only in Dominick's Data Manual.
+Furthermore, we provide two files located in the [_CSV/_](CSV) folder that prepare the information on the week variable 
+and the stores included that was covered only in Dominick's Data Manual.
 
 **<a name="Description"></a>Description**
 
@@ -47,7 +48,7 @@ the stores included that was covered only in Dominick's Data Manual.
 The weeks file codes the week for which a data point is recorded. The stores file lists the stores included 
 in the Dominick's research project.
 The _upcrfj_ file provides the UPC file information for refrigerated juices (_'RFJ'_) in a _SAS_ readable format 
-(see documentation about acquiring the data in the _docs/_ folder). Note that, if using _R_, there is no 
+(see documentation about acquiring the data in the [_docs/_](docs) folder). Note that, if using _R_, there is no 
 movement file available in _CSV_ format for refrigerated juices from the Dominick’s website.
 * [**_SAS/_**](SAS): The _SAS_ codes replicate the data and results of the paper located in the [_docs/_](docs) folder.
 The _upc_ part reads in all UPC files and adds a category identifier. The _move_ part reads in all movement files, 
@@ -58,15 +59,16 @@ of the weighted time-product dummy (WTPD) method.
 The _sas2csv_ code was used to convert _SAS_ files to the _CSV_ format newly available at the Dominick's website. The 
 _CSV_ files are provided to make them more useful to researchers.
 * [**_R/_**](R): The _R_ code generates analysis-ready data and derives price indices equivalent to the _SAS_ codes 
-located in the _SAS/_ folder. Common to the two sets of codes is that for the sake of exposition the weekly store-level 
-UPC data are aggregated to chain-wide item codes (attempt at tracking products across multiple UPCs) at monthly 
-frequency – but this can be changed. The difference is that while the _SAS_ codes calculate results for each category, 
-the _R_ code is restricted to one particular category, where the three-letter acronym for the category can be adapted.
+located in the [_SAS/_](SAS) folder. Common to the two sets of codes is that for the sake of exposition the weekly 
+store-level UPC data are aggregated to chain-wide item codes (attempt at tracking products across multiple UPCs) at 
+monthly frequency – but this can be changed. The difference is that while the _SAS_ codes calculate results for each 
+category, the _R_ code is restricted to one particular category, where the three-letter acronym for the category can 
+be adapted.
 * [**_docs/_**](docs): The documentation includes the paper demonstrating how the data set can be used for price 
 index research and capacity building as well as the _SAS_ output from the weighted time-product dummy method at monthly 
 frequency across all 29 categories in _CSV_ format. Note that, if using _R_, there is a small loss of information between 
 conversion in the 'truncated' PRICE variable in the _CSV_ files.
-The annex to the paper gives instructions on how to use the _R_ code located in the _R/_ folder.
+The annex to the paper gives instructions on how to use the _R_ code located in the [_R/_](R) folder.
 
 **<a name="References"></a>References** 
 
