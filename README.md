@@ -74,6 +74,6 @@ The annex to the paper gives instructions on how to use the _R_ code located in 
 
 * Kilts Center for Marketing (2013, updated 2018): [Dominick's Data Manual](https://www.chicagobooth.edu/-/media/enterprise/centers/kilts/datasets/dominicks-dataset/dominicks-manual-and-codebook_kiltscenter.aspx), Chicago.
 
-* Mehrhoff, J. (2018): Promoting the use of a publically available scanner data set in price index research and for 
-capacity building, Luxembourg.
+* Mehrhoff, J. (2018): [**Promoting the use of a publically available scanner data set in price index research and for 
+capacity building**](docs/dff.pdf), Luxembourg.
 
