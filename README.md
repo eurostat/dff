@@ -68,7 +68,7 @@ the stores included that was covered only in Dominick's Data Manual.
 
 **<a name="References"></a>References** 
 
-* Kilts Center for Marketing (2013, updated 2018): [https://www.chicagobooth.edu/-/media/enterprise/centers/kilts/datasets/dominicks-dataset/dominicks-manual-and-codebook_kiltscenter.aspx](Dominick's Data Manual), Chicago.
+* Kilts Center for Marketing (2013, updated 2018): [Dominick's Data Manual](https://www.chicagobooth.edu/-/media/enterprise/centers/kilts/datasets/dominicks-dataset/dominicks-manual-and-codebook_kiltscenter.aspx), Chicago.
 
 * Mehrhoff, J. (2018): Promoting the use of a publically available scanner data set in price index research and for 
 capacity building, Luxembourg.
