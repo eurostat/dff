@@ -25,18 +25,23 @@ The data set covers more than 90 stores for almost 400 weeks from September 1989
 100 million observations (after cleansing) of about 18 000 UPCs (including re-launches) in 29 categories (from 
 analgesics to toothpastes).
 
-In order to run the codes, it is necessary to download (and extract) all category-specific files, i.e. the UPC files 
-and movement files (in _SAS_ format for the _SAS_ codes, in _CSV_ format for the _R_ code) from the website of the 
-James M. Kilts Center at the University of Chicago Booth School of Business:
-[https://www.chicagobooth.edu/research/kilts/datasets/dominicks](https://www.chicagobooth.edu/research/kilts/datasets/dominicks).
-
-**<a name="Description"></a>Description**
+**<a name="Overview"></a>Overview**
 
 The documentation located in the _docs/_ folder introduces the data set and describes how the data can be acquired 
 and pre-processed, followed by a presentation of the estimation of price index numbers showing the usefulness for 
 both research and training purposes. The codes used are located in the _SAS/_ folder. The newly-made _CSV_ files (see 
 link below) should be used to run the code located in the _R/_ folder. Both sets of code allow generating analysis-ready 
 data and basing calculations on the very same data, thus discounting the incomparability of different data sets.
+
+In order to run the codes, it is necessary to download (and extract) all category-specific files, i.e. the UPC files 
+and movement files (in _SAS_ format for the _SAS_ codes, in _CSV_ format for the _R_ code) from the website of the 
+James M. Kilts Center at the University of Chicago Booth School of Business:
+[https://www.chicagobooth.edu/research/kilts/datasets/dominicks](https://www.chicagobooth.edu/research/kilts/datasets/dominicks).
+
+Furthermore, we provide two files located in the _CSV/_ folder that prepare the information on the week variable and 
+the stores included that was covered only in Dominick's Data Manual.
+
+**<a name="Description"></a>Description**
 
 * [**_CSV/_**](CSV): These files are needed to run the _SAS_ code and _R_ code, respectively.
 The weeks file codes the week for which a data point is recorded. The stores file lists the stores included 
@@ -62,9 +67,6 @@ index research and capacity building as well as the _SAS_ output from the weight
 frequency across all 29 categories in _CSV_ format. Note that, if using _R_, there is a small loss of information between 
 conversion in the 'truncated' PRICE variable in the _CSV_ files.
 The annex to the paper gives instructions on how to use the _R_ code located in the _R/_ folder.
-
-Furthermore, we provide two files located in the _CSV/_ folder that prepare the information on the week variable and 
-the stores included that was covered only in Dominick's Data Manual.
 
 **<a name="References"></a>References** 
 
