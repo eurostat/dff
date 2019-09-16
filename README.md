@@ -64,11 +64,11 @@ store-level UPC data are aggregated to chain-wide item codes (attempt at trackin
 monthly frequency – but this can be changed. The difference is that while the _SAS_ codes calculate results for each 
 category, the _R_ code is restricted to one particular category, where the three-letter acronym for the category can 
 be adapted.
-* [**_docs/_**](docs): The documentation includes the paper demonstrating how the data set can be used for price 
+* [**_docs/_**](docs): The documentation includes the [paper](docs/dff.pdf) demonstrating how the data set can be used for price 
 index research and capacity building as well as the _SAS_ output from the weighted time-product dummy method at monthly 
 frequency across all 29 categories in _CSV_ format. Note that, if using _R_, there is a small loss of information between 
 conversion in the 'truncated' PRICE variable in the _CSV_ files.
-The annex to the paper gives instructions on how to use the _R_ code located in the [_R/_](R) folder.
+The [annex to the paper](docs/dff_r.pdf) gives instructions on how to use the _R_ code located in the [_R/_](R) folder.
 
 **<a name="References"></a>References** 
 
