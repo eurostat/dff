@@ -63,5 +63,5 @@ move_monthly$SHARE <- move_monthly$SALES / move_monthly$TOTAL
 
 #REGRESSION
 
-wtpd <- lm(LOGPRICE ~ factor(MONTH) + factor(NITEM), data = move_monthly, weights = SHARE)
+wtpd <- lm(LOGPRICE ~ factor(MONTH) + interaction(COM_CODE, NITEM), data = move_monthly, weights = SHARE)
 wtpd1 <- as.data.frame(coef(wtpd))
