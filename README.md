@@ -2,12 +2,12 @@ dff
 ===
 
 The Dominick's Finer Foods data set: 
-Promoting the use of a publically available scanner data set in price index research and for capacity building.
+Promoting the use of a publicly available scanner data set in price index research and for capacity building.
 ---
 
 **About**
 
-The present material demonstrates how a publically available scanner data set can be used for price index research 
+The present material demonstrates how a publicly available scanner data set can be used for price index research 
 and capacity building.
 
 <table align="center">
@@ -18,7 +18,7 @@ and capacity building.
 
 **<a name="Data_source"></a>Data source**
 
-The Dominick's Finer Foods (a now-defunct Chicago-area grocery store chain) data set is a publically available 
+The Dominick's Finer Foods (a now-defunct Chicago-area grocery store chain) data set is a publicly available 
 scanner dataset that is provided for academic research purposes only. It contains sales information at the store 
 level on a weekly basis for each UPC (Universal Product Code) in a category. 
 The data set covers more than 90 stores for almost 400 weeks from September 1989 to May 1997 and totals around 
@@ -74,6 +74,6 @@ The [annex to the paper](docs/dff_r.pdf) gives instructions on how to use the _R
 
 * Kilts Center for Marketing (2013, updated 2018): [Dominick's Data Manual](https://www.chicagobooth.edu/-/media/enterprise/centers/kilts/datasets/dominicks-dataset/dominicks-manual-and-codebook_kiltscenter.aspx), Chicago.
 
-* Mehrhoff, J. (2018): [**Promoting the use of a publically available scanner data set in price index research and for 
+* Mehrhoff, J. (2018): [**Promoting the use of a publicly available scanner data set in price index research and for 
 capacity building**](docs/dff.pdf), Luxembourg.
 
