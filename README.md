@@ -11,7 +11,7 @@ The present material demonstrates how a publicly available scanner data set can 
 and capacity building.
 
 <table align="center">
-    <tr>     <td  rowspan="4" align="center" width="140px"> <a href="docs/dff.pdf"><img src="docs/article_front_cover.png"></img></a></td>
+    <tr>     <td  rowspan="4" align="center" width="120px"> <a href="docs/dff.pdf"><img src="docs/article_front_cover.png"></img></a></td>
              <td align="left"><i>author</i></td> <td align="left"> <a href="mailto:jens.mehrhoff@bundesbank.de">J.Mehrhoff</a></td> </tr> 
     <tr> <td align="left"><i>status</i></td> <td align="left">since 2018 &ndash; <b>closed</b></td></tr>     
     <tr> <td align="left"><i>version</i></td> <td align="left">2.0</td> </tr> 
