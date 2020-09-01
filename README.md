@@ -5,18 +5,8 @@ The Dominick's Finer Foods data set:
 Promoting the use of a publicly available scanner data set in price index research and for capacity building.
 ---
 
-**About**
-
 The present material demonstrates how a publicly available scanner data set can be used for price index research 
 and capacity building.
-
-<table align="center">
-    <tr>     <td  rowspan="4" align="center" width="120px"> <a href="docs/dff.pdf"><img src="docs/article_front_cover.png"></img></a></td>
-             <td align="left"><i>author</i></td> <td align="left"> <a href="mailto:jens.mehrhoff@bundesbank.de">J.Mehrhoff</a></td> </tr> 
-    <tr> <td align="left"><i>status</i></td> <td align="left">since 2018 &ndash; <b>closed</b></td></tr>     
-    <tr> <td align="left"><i>version</i></td> <td align="left">2.0</td> </tr> 
-    <tr> <td align="left"><i>license</i></td> <td align="left"><a href="https://joinup.ec.europa.eu/sites/default/files/eupl1.1.-licence-en_0.pdfEUPL">EUPL</a> <i>(cite the source code or the reference below!)</i></td> </tr> 
-</table>
 
 **<a name="Data_source"></a>Data source**
 
@@ -71,6 +61,16 @@ index research and capacity building as well as the _SAS_ output from the weight
 frequency across all 29 categories in _CSV_ format. Note that, if using _R_, there is a small loss of information between 
 conversion in the 'truncated' PRICE variable in the _CSV_ files.
 The [annex to the paper](docs/dff_r.pdf) gives instructions on how to use the _R_ code located in the [_R/_](R) folder.
+
+**About**
+
+<table align="center">
+    <tr>     <td  rowspan="4" align="center" width="120px"> <a href="docs/dff.pdf"><img src="docs/article_front_cover.png"></img></a></td>
+             <td align="left"><i>author</i></td> <td align="left"> <a href="mailto:jens.mehrhoff@bundesbank.de">Mehrhoff J.</a></td> </tr> 
+    <tr> <td align="left"><i>status</i></td> <td align="left">since 2018 &ndash; <b>closed</b></td></tr>     
+    <tr> <td align="left"><i>version</i></td> <td align="left">2.0</td> </tr> 
+    <tr> <td align="left"><i>license</i></td> <td align="left"><a href="https://joinup.ec.europa.eu/sites/default/files/eupl1.1.-licence-en_0.pdfEUPL">EUPL</a> <i>(cite the source code or the reference below!)</i></td> </tr> 
+</table>
 
 **<a name="References"></a>References** 
 
