@@ -47,7 +47,7 @@ The `upc` part reads in all UPC files and adds a category identifier. The `move`
 adds a category identifier, and calculates total dollar sales; suspect data are dropped. The `weeks_stores` part 
 reads in the week and store files and merges them with the movement and UPC files. The `wtpd` example aggregates 
 the data, calculates unit prices as well as expenditure shares per category, and derives price indices by means 
-of the weighted time-product dummy (WTPD) method.
+of the weighted time-product dummy (`WTPD`) method.
 The `sas2csv` code was used to convert `SAS` files to the `CSV` format newly available at the Dominick's website. The 
 `CSV` files are provided to make them more useful to researchers.
 * [**_R/_**](R): The `R` code generates analysis-ready data and derives price indices equivalent to the `SAS` codes 
@@ -60,7 +60,7 @@ base package whereas the second code requires the installation of the `tidyverse
 * [**_docs/_**](docs): The documentation includes the [paper](docs/dff.pdf) demonstrating how the data set can be used for price 
 index research and capacity building as well as the `SAS` output from the weighted time-product dummy method at monthly 
 frequency across all 29 categories in `CSV` format. Note that, if using `R`, there is a small loss of information between 
-conversion in the 'truncated' PRICE variable in the `CSV` files.
+conversion in the 'truncated' `PRICE` variable in the `CSV` files.
 The [annex to the paper](docs/dff_r.pdf) gives instructions on how to use the `R` code located in the [_R/_](R) folder.
 
 **About**
