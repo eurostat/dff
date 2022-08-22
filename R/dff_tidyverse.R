@@ -219,7 +219,7 @@ move <- move %>%
   )
 
 ###
-### CALCULATE TPD INDEX
+### CALCULATE MULTILATERAL INDEXES
 ###
 
 # Aggregate across UPCs, weeks, and stores
@@ -262,7 +262,97 @@ move_monthly <- move_monthly %>%
     SHARE = SALES / sum(SALES)
   )
 
-# Calculate (weighted) time-product dummy index
+# Create matrices from completed data (GEKS/CCDI, GK)
+temp_data <- move_monthly %>%
+  ungroup() %>%
+  complete(
+    nesting(COM_CODE, NITEM),
+    MONTH
+  )
+temp_price <- temp_data %>%
+  select(
+    COM_CODE, NITEM,
+    MONTH,
+    PRICE
+  ) %>%
+  pivot_wider(
+    names_from = c(COM_CODE, NITEM),
+    values_from = PRICE
+  ) %>%
+  select(
+    -MONTH
+  ) %>%
+  as.matrix()
+temp_move <- temp_data %>%
+  select(
+    COM_CODE, NITEM,
+    MONTH,
+    MOVE
+  ) %>%
+  pivot_wider(
+    names_from = c(COM_CODE, NITEM),
+    values_from = MOVE
+  ) %>%
+  select(
+    -MONTH
+  ) %>%
+  as.matrix()
+temp_share <- temp_data %>%
+  select(
+    COM_CODE, NITEM,
+    MONTH,
+    SHARE
+  ) %>%
+  pivot_wider(
+    names_from = c(COM_CODE, NITEM),
+    values_from = SHARE
+  ) %>%
+  select(
+    -MONTH
+  ) %>%
+  as.matrix()
+temp_sales <- !is.na(temp_share) # Record indicator (0/1)
+temp_month <- nrow(temp_share) # Number of months
+temp_nitem <- ncol(temp_share) # Number of products
+temp_indexes <- matrix(NA, temp_month, 4) # GEKS, CCDI, GK, and TPD
+
+# Calculate GEKS (Fisher) and CCDI (Tornqvist) indexes
+temp_matrix <- array(0, dim = c(temp_month, temp_month, 6))
+for (r in 1:(temp_month - 1)) {
+  for (c in (r + 1):temp_month) {
+    temp_matrix[r, c, 3:6] = c(
+      log(sum(replace_na(temp_share[r, ], 0) / sum(replace_na(temp_share[r, ], 0) * temp_sales[c, ]) * replace_na(temp_price[c, ] / temp_price[r, ], 0))), # log(Laspeyres index)
+      log(sum(replace_na(temp_share[c, ], 0) / sum(replace_na(temp_share[c, ], 0) * temp_sales[r, ]) * replace_na((temp_price[c, ] / temp_price[r, ])^(-1), 0))^(-1)), # log(Paasche index)
+      sum(replace_na(temp_share[r, ], 0) / sum(replace_na(temp_share[r, ], 0) * temp_sales[c, ]) * replace_na(log(temp_price[c, ] / temp_price[r, ]), 0)), # log(Geometric Laspeyres index)
+      sum(replace_na(temp_share[c, ], 0) / sum(replace_na(temp_share[c, ], 0) * temp_sales[r, ]) * replace_na(log(temp_price[c, ] / temp_price[r, ]), 0)) # log(Geometric Paasche index)
+    )
+    temp_matrix[r, c, 1:2] = c(
+      1 / 2 * (temp_matrix[r, c, 3] + temp_matrix[r, c, 4]), # log(Fisher index)
+      1 / 2 * (temp_matrix[r, c, 5] + temp_matrix[r, c, 6]) # log(Tornqvist index)
+    )
+    temp_matrix[c, r, 1:2] = -temp_matrix[r, c, 1:2] # Time reversibility
+  }
+}
+temp_index <- apply(temp_matrix[, , 1:2], c(2, 3), mean)
+temp_indexes[, 1:2] <- 100 * exp(temp_index - matrix(temp_index[1, ], temp_month, 2, byrow = TRUE))
+
+# Calculate Geary-Khamis index
+temp_matrix <- array(0, dim = c(temp_nitem, temp_nitem, 2))
+for (r in 1:temp_month) {
+  temp_matrix[, , 1] = temp_matrix[, , 1] + diag(replace_na(temp_move[r, ], 0))
+  temp_matrix[, , 2] = temp_matrix[, , 2] + replace_na(temp_share[r, ], 0) %*% t(replace_na(temp_move[r, ], 0))
+}
+temp_eigen <- c( # Solution to homogeneous linear equation system -- Normalization of last 'reference price' to 1
+  solve(
+    (solve(temp_matrix[, , 1]) %*% temp_matrix[, , 2] - diag(temp_nitem))[1:(temp_nitem - 1), 1:(temp_nitem - 1)],
+    -(solve(temp_matrix[, , 1]) %*% temp_matrix[, , 2] - diag(temp_nitem))[1:(temp_nitem - 1), temp_nitem]
+  ),
+  1
+)
+temp_index <- rowSums(replace_na(temp_share * (temp_price / matrix(temp_eigen, temp_month, temp_nitem, byrow = TRUE))^(-1), 0))^(-1)
+temp_indexes[, 3] <- 100 * (temp_index / temp_index[1])
+
+# Calculate time-product dummy index
 temp_model <- lm(
   log(PRICE) ~
     factor(MONTH) +
@@ -270,6 +360,13 @@ temp_model <- lm(
   move_monthly,
   weights = SHARE
 )
+temp_index <- c(
+  0,
+  coef(temp_model)[2:temp_month]
+)
+temp_indexes[, 4] <- 100 * exp(temp_index)
+
+# Plot time series
 index_monthly <- bind_cols(
   MONTH = as.Date(
     levels(
@@ -278,21 +375,24 @@ index_monthly <- bind_cols(
       )
     )
   ),
-  INDEX = 100 * exp(
-    c(
-      0,
-      coef(temp_model)[2:91]
-    )
-  )
+  INDEX_GEKS = temp_indexes[, 1],
+  INDEX_CCDI = temp_indexes[, 2],
+  INDEX_GK = temp_indexes[, 3],
+  INDEX_TPD = temp_indexes[, 4]
 )
-rm(temp_model)
-
-# Plot time series
+rm(list = c(ls(pattern = '^temp'), 'r', 'c'))
 index_monthly %>%
+  pivot_longer(
+    cols = starts_with('INDEX_'),
+    names_to = 'METHOD',
+    names_prefix = 'INDEX_',
+    values_to = 'INDEX'
+  ) %>%
   ggplot(
     aes(
       MONTH,
-      INDEX
+      INDEX,
+      color = METHOD
     )
   ) +
   geom_line() +
@@ -304,11 +404,10 @@ index_monthly %>%
   ) +
   scale_y_log10(
     name = NULL,
-    breaks = seq(95, 125, by = 5),
     minor_breaks = NULL
   ) +
   labs(
-    title = 'Time-product dummy index for the bottled juice category',
+    title = 'Multilateral indexes for the bottled juice category',
     subtitle = 'Oct 1989 = 100, log scale',
     caption = 'Sources: Dominick\'s Finer Foods Data Set; and IMF staff calculations.'
   )
